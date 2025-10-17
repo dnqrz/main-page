@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+:root {
+    --background-color1: #F6F0F9;
+    --background-color2: #F8EBFF;
+    --light-color: #F7F1F9;
+    --dark-color: #371D43;
+    --main-color: #B783FF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+body {
+    font-family: "Figtree", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--dark-color);
+    background: linear-gradient(to bottom, var(--background-color1), var(--background-color2));
+    overflow: hidden;
+}
+
+/* Efeito granulado */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><filter id='noise'><feTurbulence baseFrequency='0.5' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 1'/></feComponentTransfer></filter><rect width='100%' height='100%' filter='url(%23noise)' fill='%23000' /></svg>");
+    background-repeat: repeat;
+    opacity: 0.2;
+    mix-blend-mode: multiply;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+}
+
+/* Logo */
+.logo {
+    color: var(--dark-color);
+    font-family: "Orbitron", sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+}
+
+/* Link pro currículo */
+.resume {
+    display: flex;
+    align-items: center;
+    color: var(--dark-color);
+    text-decoration: none;
+    cursor: pointer;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+.resume:hover,
+.resume:active {
+    color: var(--dark-color);
+    font-weight: 700;
+}
+
+/* Definir idioma */
+.languages {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-weight: 300;
+    color: var(--dark-color);
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-family: "Figtree", sans-serif;
+    color: var(--dark-color);
+}
+
+button:hover,
+button:active {
+    color: var(--dark-color);
+    font-weight: 700;
+}
+
+/* Conteúdo */
+main {
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    margin-top: 36px;
+    z-index: 2;
+}
+
+/* Elementos textuais */
+h1 {
+    background: linear-gradient(135deg,#371D43, #8A6C98 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 128px;
+    font-weight: 500;
+    letter-spacing: -2px;
+}
+
+.subtitle {
+    padding-bottom: 16px;
+}
+
+/* Animação barra */
+.loading-bar {
+    width: 56px;
+    height: 4px;
+    background: var(--main-color);
+    border-radius: 2px;
+    margin: 30px auto 40px;
+    animation: loading 3s ease-in-out infinite;
+}
+
+@keyframes loading {
+    100%,
+    0% {
+        width: 4px;
+    }
+
+    50% {
+        width: 60px;
+    }
+}
+
+/* Círculo maior */
+.main-circle {
+    position: absolute;
+    z-index: 2;
+    left: 20%;
+    top: 130%;
+    width: 683px;
+    height: 683px;
+    background: var(--main-color);
+    border-radius: 50%;
+    box-shadow: 0 0 80px var(--main-color);
+    animation: main-slide 6s ease-in-out infinite;
+}
+
+@keyframes main-slide {
+
+    0%,
+    100% {
+        transform: translateX(0px);
+    }
+
+    50% {
+        transform: translateX(50px);
+    }
+}
+
+/* Círculo menor */
+.small-circle {
+    position: absolute;
+    z-index: 1;
+    right: 40%;
+    top: 145%;
+    width: 50px;
+    height: 50px;
+    background: var(--main-color);
+    border-radius: 50%;
+    box-shadow: 0 0 80px var(--main-color);
+    animation: small-slide 6s ease-in-out infinite;
+}
+
+@keyframes small-slide {
+
+    0%,
+    100% {
+        transform: translateX(+5vh);
+    }
+
+    50% {
+        transform: translateX(-80vh);
+    }
+}
+
+/* Horizonte */
+.horizon {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 272px;
+    /* Efeito fosco*/
+    z-index: 3;
+    background: linear-gradient(to bottom, transparent 0%, var(--light-color) 80%);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--light-color);
+}
+
+/* Rodapé */
+footer {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 24px;
+    bottom: 16px;
+    z-index: 99;
+}
+
+/* Links redes sociais */
+.social-links {
+    padding: 8px 32px;
+    width: 200px;
+    gap: 32px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    background: var(--main-color);
+}
+
+.social-btn {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: var(--light-color);
+}
+
+/* Copyright */
+.copyright {
+    font-size: 16px;
+    font-weight: 500;
+    background: linear-gradient(135deg, #8A6C98, #371D43);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Acessibilidade */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 40px;
+        padding-bottom: 24px;
+    }
+
+    .main-circle {
+        width: 200px;
+        height: 200px;
+        top: 170%;
+    }
+
+    .small-circle {
+        width: 35px;
+        height: 35px;
+        top: 175%;
+    }
+
+    main {
+        padding: 32px 24px;
+    }
+
+    .languages {
+        top: 15px;
+        right: 15px;
+    }
+
+    .horizon {
+        height: 40vh;
+    }
+
+    @keyframes small-slide {
+
+        0%,
+        100% {
+            transform: translateX(+10vh);
+        }
+
+        50% {
+            transform: translateX(-20vh);
+        }
+    }
+}
